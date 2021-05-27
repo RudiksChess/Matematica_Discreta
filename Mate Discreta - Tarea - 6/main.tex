@@ -70,97 +70,277 @@
 
 %---------------------------
 
-\section{Problema 1.}  Demuestre las siguientes propiedades de la divisibilidad para enteros $a, b \& c$.
+
+\section{Problema 1.}  Demuestre las siguientes propiedades de la divisibilidad para enteros $a, b$ \& $c$.
 \begin{enumerate}[label=\alph*.]
 \item Si $\ a|b$ y $ b| c$, entonces $a \mid c$.
 \begin{solution}
-	content...
-\end{solution}
+	Sean $m,n\in\mathbb{Z}$. Por hipótesis tenemos: 
+	$$b=ma\qquad \text{ y } \qquad c = nb.$$
+ 	Ahora bien, debemos probar
+ 	$$c=ka,\qquad k\in\mathbb{Z}.$$ 
+En donde $$c=nb=nma=ka. $$
+$\therefore \ $  $a$ divide a $c$ $\implies c | a$. 
+ \end{solution}
+
 \item  Si $a \mid b$ y $a \mid c$, entonces $a \mid \operatorname{mcd}(b, c)$
+
 \begin{solution}
-	content...
+	Sean $n,m\in\mathbb{Z}$.  Por hipótesis tenemos: 
+	$$b=ma \qquad \text{ y } \qquad c=na.$$
+	
+	Además, por el teorema de Bézout, el mcd$(b,c)$ se puede expresar como $\text{mcd}(b,c)=k_1b+k_2c$. Ahora bien, debemos probar
+	$$k_1b+k_2c=ka, \qquad k\in\mathbb{Z}.$$
+	En donde
+	$$k_1b+k_2c=k_1(ma)+k_2(na)=(k_1m+k_2n)a=ka.$$
+	$\therefore \ a$ divide a $\text{mcd}(b,c) \implies a |\text{mcd}(b,c) $. 
 \end{solution}
+
+
 \item  Si $a \mid c$ y $b \mid c$, entonces $\operatorname{mcm}(a, b) \mid c$.
 \begin{solution}
-	content...
+	Sean $m,n\in\mathbb{Z}$.  Por hipótesis tenemos: 
+	$$c=ma\implies a=\frac{c}{m} \qquad \text{ y }\qquad  c=nb\implies b=\frac{c}{n}.$$	
+	Además, por el teorema de 5 de la sección 4 de \cite{rosen2012discrete}, sabemos  
+	$$\text{mcm}(a,b)=\frac{ab}{\text{mcd}(a,b)}.$$
+	Por el teorema de Bézout, mcd$(a,b)=sa+tb$. Ahora bien, debemos probar
+	$$c=k\frac{ab}{\text{mcd}(a,b)}, \quad k:=(sn+tm) \in\mathbb{Z}. $$
+	Entonces 
+	$$k\frac{ab}{sa+tb}=k\frac{\left(\frac{c}{m}\right)\left(\frac{c}{n}\right)}{s\left(\frac{c}{m}\right)+t\left(\frac{c}{n}\right)}=k\frac{\frac{c^2}{mn}}{\frac{scn+tcm}{mn}}=k\frac{c^2}{c(sn+tm)}=k\frac{c}{sn+tm}=c.$$
+	Por lo tanto $\text{mcm}(a,b)$ divide a $c$. $\implies\text{mcm}(a,b)|c$.
 \end{solution}
 \end{enumerate}
 
 \section{Problema 2.} Pruebe que $n^{5}-n$ siempre es divisible por 30, para todo entero positivo $n$.
+\begin{tcolorbox}[colback=gray!15,colframe=black!1!black,title=FERMAT’S LITTLE THEOREM]
+	If $p$ is prime and $a$ is an integer not divisible by $p$, then
+	$a^{p-1} \equiv 1$ (mod $p$).\newline \newline 
+	Furthermore, for every integer a we have $a^p \equiv a$ (mod $p$).
+	\end{tcolorbox}
 \begin{solution}
-	content...
+	Trivial. A probar: 
+	$$n^5-n=30c, \qquad c\in\mathbb{Z}.$$
+	
+	En módulo 5 la expresión sería
+	$$n^5-n = 0.$$
+	Entonces, por el  teorema pequeño de Fermat 
+	$$n^5\equiv n \qquad \text{mod 5}.$$
 \end{solution}
+
+
 \section{Problema 3.} Encuentre el máximo común divisor de los siguientes pares de números:
 \begin{enumerate}[label=\alph*.]
 	\item 542 y 234
 	\begin{solution}
-		content...
-	\end{solution}
+	Por el algoritmo de Euclides: 
+	\begin{align*}
+		  542 &= 2*234+74   \\
+		 234 &= 3*74+12\\
+		 74 &= 6*12+2\\
+		 12 &= 6*2+0
+	\end{align*}
+$\therefore \ $ mcd$(542,234)$=2. 
+\end{solution}
 	\item  9652 y 252
 	\begin{solution}
-		content...
+		\begin{align*}
+			 9652 &= 252*38 + 76\\
+			252 &= 76*3 + 24\\
+			76 &= 24*3 + 4\\
+			24 &= 4*6 + 0
+		\end{align*}
+	$\therefore \ $ mcd$(9652,252)$=4. 
 	\end{solution}
 	\item 8374 y 24517
 	\begin{solution}
-		content...
+		\begin{align*}
+			 24517 &= 8374*2 + 7769\\
+			8374 &= 7769*1 + 605\\
+			7769 &= 605*12 + 509\\
+			605 &= 509*1 + 96\\
+			509 &= 96*5 + 29\\
+			96 &= 29*3 + 9\\
+			29 &= 9*3 + 2\\
+			9 &= 2*4 + 1\\
+			2 &= 1*2 + 0
+		\end{align*}
+		$\therefore \ $ mcd$(8374,24517)$=1. 
 	\end{solution}
 	\item 24537 y 1387
 	\begin{solution}
-		content...
+		\begin{align*}
+			 24537 &= 1387*17 + 958\\
+			1387 &= 958*1 + 429\\
+			958 &= 429*2 + 100\\
+			429 &= 100*4 + 29\\
+			100 &= 29*3 + 13\\
+			29 &= 13*2 + 3\\
+			13 &= 3*4 + 1\\
+			3 &= 1*3 + 0
+		\end{align*}
+	$\therefore \ $ mcd$(24537,1387)$=1. 
 	\end{solution}
 \end{enumerate}
 
 \section{Problema 4.} Encuentre el mínimo común múltiplo de los siguientes pares de números:
 \begin{enumerate}[label=\alph*.]
-	\item $234 \mathrm{y} 12$
+	\item $234$ y $12$
 	\begin{solution}
-		content...
+		Comenzamos calculando el mcd:
+		\begin{align*}
+			 234 &= 12*19 + 6\\
+			12    &= 6*2 + 0
+		\end{align*}
+	Implica que 
+	$$mcm(234,12)=\frac{234*12}{mcd(234,12)}=\frac{234*12}{6}=234*2=468.$$
 	\end{solution}
 	\item 142 y 742
 	\begin{solution}
-		content...
+			Comenzamos calculando el mcd:
+		\begin{align*}
+			 742 &= 142*5 + 32\\
+			142 &= 32*4 + 14\\
+			32 &= 14*2 + 4\\
+			14 &= 4*3 + 2\\
+			4 &= 2*2 + 0
+		\end{align*}
+	Implica que
+	$$mcm(742,142)=\frac{742*142}{mcd(742,142)}=\frac{742*142}{2}=742*71=52682.$$
 	\end{solution}
-	\item $17 \mathrm{y} 141$
+	\item $17 $ y $141$
 	\begin{solution}
-		content...
+			Comenzamos calculando el mcd:
+		\begin{align*}
+			 141 &= 17*8 + 5\\
+			17 &= 5*3 + 2\\
+			5 &= 2*2 + 1\\
+			2 &= 1*2 + 0
+		\end{align*}
+	Implica que
+	$$mcm(141,17)=\frac{141*17}{mcd(141,17)}=\frac{141*17}{1}=2397.$$
 	\end{solution}
 	\item 35 y 24
 	\begin{solution}
-		content...
+			Comenzamos calculando el mcd:
+		\begin{align*}
+			 35 &= 24*1 + 11\\
+			24 &= 11*2 + 2\\
+			11 &= 2*5 + 1\\
+			2 &= 1*2 + 0
+		\end{align*}
+	Implica que
+	$$mcm(35,24)=\frac{35*24}{mcd(35,24)}=\frac{35*24}{1}=840.$$
 	\end{solution}
 \end{enumerate}
 
-\section{Problema 5.} Encuentre todos los enteros $x \& y$, tales que:
+\section{Problema 5.} Encuentre todos los enteros $x$ \& $y$, tales que:
 \begin{enumerate}[label=\alph*.]
 	\item $93 x+81 y=3$
 	\begin{solution}
-		content...
+		Se determina si la ecuación diofántica tiene soluciones. Calculamos el mcd(93,81):
+		\begin{align*}
+			 93 &= 81*1 + 12\\
+			81 &= 12*6 + 9\\
+			12 &= 9*1 + 3\\
+			9 &= 3*3 + 0\\
+		\end{align*}
+	Concluimos que mcd(93,81)=3 (múltiplo de 3), por lo tanto, sí tiene solución la ecuación diofántica. Ahora, calculamos una solución particular: 
+	\begin{align*}
+		3	&=	(1 * 12) + (-1 * 9)\\
+		&=	(-1 * 81) + (7 * 12)\\
+		&=	(7 * 93) + (-8 * 81)\\
+		&=	(-8 * 81) + (7 * 93)
+	\end{align*}
+Es decir:
+$$X_0=7, Y_0=-8$$
+	
+	 Quiere decir que la ecuación tiene soluciones infinitas, y por lo tanto se pueden usar las siguientes fórmulas encontradas en clase: 
+	$$t=\frac{\lambda b}{\text{mcd}(a,b)}=\frac{\lambda 81}{3}=27\lambda \quad\text{ y }\quad s=-\frac{\lambda 93}{3}=-31\lambda. $$
+	Entonces, la solución es:
+	$$\begin{cases}
+		x &= 7+27\lambda\\
+		y &= -8-31\lambda
+	\end{cases}$$
 	\end{solution}
 	\item $43 x+128 y=1$
 	\begin{solution}
-		content...
+		Se determina si la ecuación diofántica tiene soluciones. Calculamos el mcd(128,43):
+		\begin{align*}
+			 128 = 43*2 + 42\\
+			43 = 42*1 + 1\\
+			42 = 1*42 + 0\\
+		\end{align*}
+	Es decir:
+	$$X_0=3,Y_0=-1.$$
+		Concluimos que mcd(128,43)=1 (múltiplo de 1), por lo tanto, sí tiene solución la ecuación diofántica. Ahora, calculamos la solución particular: 
+		\begin{align*}
+			1	&=	(1 * 43) + (-1 * 42)\\
+			&=	(-1 * 128) + (3 * 43)
+		\end{align*}
+		
+		
+		Quiere decir que la ecuación tiene soluciones infinitas, y por lo tanto se pueden usar las siguientes fórmulas encontradas en clase: 
+		$$t=\frac{\lambda b}{\text{mcd}(a,b)}=\frac{\lambda 128}{1} \quad\text{ y }\quad s=-\frac{\lambda 43}{1}. $$
+		Entonces, la solución es:
+		$$\begin{cases}
+			x &= 3+128\lambda\\
+			y &= -1-43\lambda
+		\end{cases}$$
 	\end{solution}
 \end{enumerate}
 
-\section{Problema 6.} Encuentre enteros positivos $x \& y$ que satisfagan las condiciones indicadas:
+\section{Problema 6.} Encuentre enteros positivos $x $ \& $y$ que satisfagan las condiciones indicadas:
 \begin{enumerate}[label=\alph*.]
 	\item $x+y=150, \operatorname{mcd}(x, y)=30$
 	\begin{solution}
-		content...
+		Usamos el teorema de Bézout:
+		$$\begin{cases}
+			x+y&=150\\
+			sx+ty &=30
+		\end{cases}$$
+	Es decir, despejando para $y$, se tiene: 
+	$$y=150-x\implies sx+t(150-x)=30\implies sx+150t-xt=30\implies$$
+	$$\implies x(s-t)=30-150t\implies x= \frac{30-150t}{s-t}.$$
+	Volviendo a la ecuación inicial:
+	$$ \frac{30-150t}{(s-t)}+y=150\implies y=150-\frac{30-150t}{(s-t)}=\frac{150s-30}{s-t}.$$
+	Por lo tanto $x=\frac{30-150t}{s-t}$ y $y=\frac{150s-30}{s-t}$.
 	\end{solution}
 	\item $x y=8400, \operatorname{mcd}(x, y)=20$
 	\begin{solution}
-		content...
+		Usamos el teorema de Bézout:
+		$$\begin{cases}
+			xy&=8400\\
+			sx+ty &=20
+		\end{cases}$$
+	Es decir, despejando para $y$
+	$$y=\frac{8400}{x}$$
+	Evaluando en la segunda ecuación 
+	$$sx+t\left(\frac{8400}{x}\right)=20\implies x^2-\frac{20}{s}+\frac{8400t}{s}=0$$
+	Usando la fórmula de Dieta: 
+	$$x=\frac{10\pm \sqrt{10-84st}}{s}.$$
+	Volviendo a la primera ecuación, concluimos: 
+	$$y=\frac{10\pm \sqrt{10-84st}}{t}.$$
+	En las soluciones asumimos que $t,s\neq 0$.
 	\end{solution}
 \end{enumerate}
 
 \section{Problema 7.} Calcule $\operatorname{mcd}(203,91,77)$.
 \begin{solution}
-	content...
+	Encontrando el mcd(203,91):
+	\begin{align*}
+		 203 &= 91*2 + 21\\
+		91 &= 21*4 + 7\\
+		21 &= 7*3 + 0
+	\end{align*}
+El mcd(203,91)=7. Ahora bien, calculamos el mdc(7,77):
+\begin{align*}
+	 77 = 7*11 + 0
+\end{align*}
+Por lo tanto, el gcd(203,91,7) = 7.
 \end{solution}
 
 %---------------------------
-%\bibliographystyle{apalike}
-%\bibliography{sample.bib}
+\bibliographystyle{apalike}
+\bibliography{sample.bib}
 
 \end{document}
