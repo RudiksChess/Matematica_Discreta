@@ -1,0 +1,270 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[top = 2.5cm, bottom = 2.5cm, left = 2.5cm, right = 2.5cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{multirow} 
+\usepackage{booktabs} 
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage[spanish]{babel}
+\usepackage{setspace}
+\setlength{\parindent}{0in}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{etoolbox}
+\usepackage{apalike}
+\usepackage{minibox}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\AtBeginEnvironment{align}{\setcounter{equation}{0}}
+\newenvironment{solution}
+  {\renewcommand\qedsymbol{$\square$}\begin{proof}[\textcolor{blue}{Solución}]}
+  {\end{proof}}
+\usepackage{enumitem}
+\pagestyle{fancy}
+
+\fancyhf{}
+
+\lhead{\footnotesize Matemática Discreta - }
+\rhead{\footnotesize  Rudik Roberto Rompich}
+\cfoot{\footnotesize \thepage}
+
+\begin{document}
+    \thispagestyle{empty} 
+    \begin{tabular}{p{15.5cm}}
+    \begin{tabbing}
+    \textbf{Universidad del Valle de Guatemala} \\
+    Departamento de Matemática\\
+    Licenciatura en Matemática Aplicada\\\\
+   \textbf{Estudiante:} Rudik Roberto Rompich\\
+   \textbf{E-mail:} \textcolor{blue}{ \href{mailto:rom19857@uvg.edu.gt}{rom19857@uvg.edu.gt}}\\
+   \textbf{Carné:} 19857
+    \end{tabbing}
+    \begin{center}
+        MM2015 - Matemática Discreta - Catedrático: Mario Castillo\\
+        \today
+    \end{center}\\
+    \hline
+    \\
+    \end{tabular} 
+    \vspace*{0.3cm} 
+    \begin{center} 
+    {\Large \bf Tarea 7
+} 
+        \vspace{2mm}
+    \end{center}
+    \vspace{0.4cm}
+    %---------------------------
+%\begin{tcolorbox}[colback=gray!15,colframe=black!1!black,title=A nice heading]
+%\end{tcolorbox}
+
+%\fbox{lol}
+
+%---------------------------
+
+\section{Problema 1}
+\begin{tcolorbox}[colback=gray!15,colframe=black!1!black,title=Teorema 1 - Sección 4.4 de \cite{rosen2012discrete}]
+	If $a$ and $m$ are relatively prime integers and $m > 1$, then an inverse of a modulo $m$ exists. Furthermore, this inverse is unique modulo $m$. (That is, there is a unique positive integer a less than m that is an inverse of a modulo $m $and every other inverse of a modulo $m$ is congruent to a modulo $m$.)
+	\end{tcolorbox}
+Utilice el algoritmo euclidiano para encontrar un entero $a^{-1}$ en $\mathbb{Z}_n$ tal que $a^{-1}\cdot a \equiv 1$ (mod $n$), en donde:
+\begin{enumerate}
+	\item $a\equiv 5$ (mod 13) 
+	\begin{solution}
+		Procedemos a calcular el mcd(13,5) con el algoritmo de Euclides: 
+		\begin{align*}
+			13 &= 2*5+3\\
+			5  &= 1*3 + 2\\ 
+			3  &= 1*2 +1\\
+			2 &= 2*1+0
+		\end{align*}
+	Por lo tanto, el mdc(13,5) = 1. Entonces, el \textbf{teorema 1} nos afirma que existe un inverso de 5 en módulo 13. Nótese que por el procedimiento anterior, se propone encontrar los coeficientes de Bézout, yendo hacia atrás:
+\begin{align*}
+	1	&=	(1 * 3) + (-1 * 2)\\
+	&=	(-1 * 5) + (2 * 3)\\
+	& =	(2 * 13) + (-5 * 5)\\
+	&=	(-5 * 5) + (2 * 13).
+\end{align*}
+Por lo tanto, los coeficientes son -5  y 13. Es decir que $a^{-1}\equiv -5$ mod (13). Comprobando: 
+$$a^{-1}\cdot a = -5\cdot 5 = -25 \equiv 1, \quad (\text{mod 13}).$$
+	\end{solution}
+
+
+
+
+	\item  $a\equiv 13$ (mod 19)
+	\begin{solution}
+		Procedemos a calcular el mcd(19,13) con el algoritmo de Euclides: 
+		\begin{align*}
+			19 &= 1*13 + 6\\
+			13 &= 2*6 + 1\\
+			6 &= 6*1 + 0
+		\end{align*}
+		Por lo tanto, el mdc(19,13) = 1. Entonces, el \textbf{teorema 1} nos afirma que existe un inverso de 13 en módulo 19. Nótese que por el procedimiento anterior, se propone encontrar los coeficientes de Bézout, yendo hacia atrás:
+		\begin{align*}
+			1	&=	(1 * 13) + (-2 * 6)\\
+			&=	(-2 * 19) + (3 * 13)\\
+			&=	(3 * 13) + (-2 * 19)
+		\end{align*}
+		Por lo tanto, los coeficientes son 3  y -2. Es decir que $a^{-1}\equiv 3$ mod (19). Comprobando: 
+		$$a^{-1}\cdot a = 3\cdot 13 = 39 \equiv 1, \quad (\text{mod 19}).$$
+	\end{solution}
+\end{enumerate}
+El entero $a^{-1}$ se conoce como el \textit{inverso multiplicativo} de $a$ (mod $n$).
+
+\section{Problema 2}
+
+¿Para qué valores de $m > 0$ tiene solución la ecuación $30x + 14y = m$?
+
+\begin{solution}
+	Procedemos a encontrar el mcd(30,14): 
+	\begin{align*}
+		30 &= 2*14 + 2\\
+		14 &= 7*2 + 0
+	\end{align*}
+Es decir que el mcd(30,14) = 2. Por lo tanto, cualquier valor 2$m$> 0, tendrá solución la ecuación. 
+\end{solution}
+
+\section{Problema 3}
+
+Resuelva las siguientes congruencias:
+\begin{enumerate}
+	\item $66x \equiv 42$ (mod 168)
+	\begin{solution}
+		Procedemos a encontrar la inversa de $a\equiv 66 $ (mod 168). Es neceario calcular el mcd(168,66):
+		\begin{align*}
+			168 &= 2*66 + 36\\
+			66 &= 1*36 + 30\\
+			36 &= 1*30 + 6\\
+			30 &= 5*6 + 0
+		\end{align*}
+	Entonces, el mdc(168,66)=6.  Por lo tanto, 6 es múltiplo de 42; por lo que la ecuación sí tiene solución. Ahora tenemos la ecuación diofántica:
+	$$168x+66y=42$$ 
+	Nótese que por el procedimiento anterior, se propone encontrar los coeficientes de Bézout, yendo hacia atrás:
+	\begin{align*}
+6	&=	(1 * 36) + (-1 * 30)\\
+&=	(-1 * 66) + (2 * 36)\\
+&=	(2 * 168) + (-5 * 66)\\
+&=	(-5 * 66) + (2 * 168)
+	\end{align*}
+Nótese que sí multiplcamos por 7, entonces tenemos 2 soluciones: 
+$$x_0=14 \qquad y \qquad y_0=-35.$$
+Para encontar las soluciones generales, tenemos las siguientes ecuaciones demostradas en clase: 
+\begin{center}
+	\fbox{$s=-{(\lambda a)\over \text{mcd}(a,b)}$ y $t={(\lambda b)\over \text{mcd}(a,b)}$ }
+\end{center}
+Por lo tanto: 
+$$s=-\frac{\lambda 168}{6}=-28\lambda \qquad y \qquad t=\frac{\lambda 66}{6}=11\lambda.$$
+Por lo tanto, la solución: 
+$$x=14+11\lambda \qquad y \qquad  y= -35-28\lambda.$$	
+	Las soluciones particulares son triviales.
+	\end{solution}
+	\item $21x \equiv 18$ (mod 30)
+	
+		\begin{solution}
+		Procedemos a encontrar la inversa de $a\equiv 21 $ (mod 30). Es necesario calcular el mcd(30,21):
+		\begin{align*}
+			30 &= 1*21 + 9\\
+			21 &= 2*9 + 3\\
+			9 &= 3*3 + 0
+		\end{align*}
+		Entonces, el mdc(30,21)=3.  Por lo tanto, 3 es múltiplo de 18; por lo que la ecuación sí tiene solución. Ahora tenemos la ecuación diofántica:
+		$$30x+21y=18.$$ 
+		Nótese que por el procedimiento anterior, se propone encontrar los coeficientes de Bézout, yendo hacia atrás:
+		\begin{align*}
+3	&=	(1 * 21) + (-2 * 9)\\
+&=	(-2 * 30) + (3 * 21)\\
+&=	(3 * 21) + (-2 * 30)
+		\end{align*}
+		Nótese que sí multiplcamos por 6, entonces tenemos 2 soluciones: 
+		$$x_0=-12 \qquad y \qquad y_0=18$$
+		Para encontar las soluciones generales, tenemos las siguientes ecuaciones demostradas en clase: 
+		\begin{center}
+			\fbox{$s=-{(\lambda a)\over \text{mcd}(a,b)}$ y $t={(\lambda b)\over \text{mcd}(a,b)}$ }
+		\end{center}
+		Por lo tanto: 
+		$$s=-\frac{\lambda 30}{3}=-10\lambda \qquad y \qquad t=\frac{\lambda 21}{3}=7\lambda.$$
+		Por lo tanto, la solución: 
+		$$x=-12+7\lambda \qquad y \qquad  y= 18-10\lambda.$$	
+			Las soluciones particulares son triviales.
+	\end{solution}
+	\item $35x \equiv 42$ (mod 49)
+		\begin{solution}
+		Procedemos a encontrar la inversa de $a\equiv 35 $ (mod 49). Es necesario calcular el mcd(49,35):
+		\begin{align*}
+49 &= 1*35 + 14\\
+35 &= 2*14 + 7\\
+14 &= 2*7 + 0
+		\end{align*}
+		Entonces, el mdc(49,35)=7.  Por lo tanto, 7 es múltiplo de 42; por lo que la ecuación sí tiene solución. Ahora tenemos la ecuación diofántica:
+		$$49x+35y=42.$$ 
+		Nótese que por el procedimiento anterior, se propone encontrar los coeficientes de Bézout, yendo hacia atrás:
+		\begin{align*}
+7	&=	(1 * 35) + (-2 * 14)\\
+&=	(-2 * 49) + (3 * 35)\\
+&=	(3 * 35) + (-2 * 49)
+		\end{align*}
+		Nótese que sí multiplcamos por 6, entonces tenemos 2 soluciones: 
+		$$x_0=-12\qquad y \qquad y_0=18.$$
+		Para encontar las soluciones generales, tenemos las siguientes ecuaciones demostradas en clase: 
+		\begin{center}
+			\fbox{$s=-{(\lambda a)\over \text{mcd}(a,b)}$ y $t={(\lambda b)\over \text{mcd}(a,b)}$ }
+		\end{center}
+		Por lo tanto: 
+		$$s=-\frac{\lambda49}{7}=-7\lambda \qquad y \qquad t=\frac{\lambda 35}{7}=5\lambda.$$
+		Por lo tanto, la solución: 
+		$$x=-12+5\lambda \qquad y \qquad  y= 18-7\lambda.$$	
+	Las soluciones particulares son triviales.
+	\end{solution}
+\end{enumerate}
+
+\section{Problema 4}
+\begin{tcolorbox}[colback=gray!15,colframe=black!1!black,title=Teorema 2 (Teorema chino del resto) de \cite{rosen2012discrete} de la sección 4.4]
+	 Let $m_{1}, m_{2}, \ldots, m_{n}$ be pairwise relatively prime positive integers greater than one and $a_{1}, a_{2}, \ldots, a_{n}$ arbitrary integers. Then the system
+
+	\begin{align*}
+		x \equiv & a_{1}\quad \left(\bmod  \ m_{1}\right), \\
+		x  \equiv & a_{2}\quad \left(\bmod  \ m_{2}\right), \\
+		\vdots\\
+		x \equiv & a_{n}\quad \left(\bmod \ m_{n}\right)
+	\end{align*}
+	
+	has a unique solution modulo $m=m_{1} m_{2} \cdots m_{n} .$ (That is, there is a solution $x$ with $0 \leq x<m$, and all other solutions are congruent modulo $m$ to this solution.)
+	\end{tcolorbox}
+Una banda de 17 piratas se reúne para repartirse un cofre con más de 100 monedas de oro, sobrando 1 moneda después del reparto. En la consiguiente pelea, muere un pirata y vuelve a hacerse el reparto sobrando de nuevo 1 moneda. ¿Cuál es el menor número de monedas que puede contener el cofre?
+\begin{solution}
+	Sea $x$ el número de monedas del cofre. De la primera y segunda condición, tenemos
+	$$\begin{cases}
+		x \equiv 1 & (\bmod \ 17 )\\
+	    x \equiv 1 & (\bmod \  16)
+	\end{cases}$$
+Entonces, aplicando el \textbf{teorema chino del resto}:
+$$m=m_1\cdot m_2 = 17*16=272  \textcolor{blue}{+1}=273.$$
+Se le suma +1, para que la condición tenga sentido y obtengamos el número menor de monedas que puede contener el cofre. 
+\end{solution}
+
+Supongamos que la solución anterior es el número real de monedas en el cofre y que la historia continúa: siempre que sobran monedas en el reparto, hay una pelea y muere un pirata. ¿Cuántos piratas quedarán vivos cuando en el reparto no sobre ninguna moneda?
+\begin{solution}
+	Trivial. Usando la función la función $\bmod$, tenemos, para el número menor de monedas (273): 
+	\begin{align*}
+		273\equiv & 1 \ (\bmod 17) \\
+		273\equiv & 1 \ (\bmod 16) \\
+		273\equiv & 3 \ (\bmod 15) \\
+		273\equiv & 7 \ (\bmod 14) \\
+		273\equiv & 0 \ (\bmod 13) \\
+	\end{align*}
+Por lo tanto, quedarán vivos 13 piratas cuando ya no sobre ninguna moneda.
+\end{solution}
+
+%---------------------------
+\bibliographystyle{apalike}
+\bibliography{sample.bib}
+
+\end{document}
