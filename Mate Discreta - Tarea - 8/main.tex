@@ -1,0 +1,135 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[top = 2.5cm, bottom = 2.5cm, left = 2.5cm, right = 2.5cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{multirow} 
+\usepackage{booktabs} 
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage[spanish]{babel}
+\usepackage{setspace}
+\setlength{\parindent}{0in}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{etoolbox}
+\usepackage{apalike}
+\usepackage{minibox}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\AtBeginEnvironment{align}{\setcounter{equation}{0}}
+\newenvironment{solution}
+  {\renewcommand\qedsymbol{$\square$}\begin{proof}[\textcolor{blue}{Solución}]}
+  {\end{proof}}
+\usepackage{enumitem}
+\pagestyle{fancy}
+
+\fancyhf{}
+
+\lhead{\footnotesize Matemática Discreta - }
+\rhead{\footnotesize  Rudik Roberto Rompich}
+\cfoot{\footnotesize \thepage}
+
+\begin{document}
+    \thispagestyle{empty} 
+    \begin{tabular}{p{15.5cm}}
+    \begin{tabbing}
+    \textbf{Universidad del Valle de Guatemala} \\
+    Departamento de Matemática\\
+    Licenciatura en Matemática Aplicada\\\\
+   \textbf{Estudiante:} Rudik Roberto Rompich\\
+   \textbf{E-mail:} \textcolor{blue}{ \href{mailto:rom19857@uvg.edu.gt}{rom19857@uvg.edu.gt}}\\
+   \textbf{Carné:} 19857
+    \end{tabbing}
+    \begin{center}
+        MM2015 - Matemática Discreta - Catedrático: Mario Castillo\\
+        \today
+    \end{center}\\
+    \hline
+    \\
+    \end{tabular} 
+    \vspace*{0.3cm} 
+    \begin{center} 
+    {\Large \bf Tarea 8
+} 
+        \vspace{2mm}
+    \end{center}
+    \vspace{0.4cm}
+    %---------------------------
+%\begin{tcolorbox}[colback=gray!15,colframe=black!1!black,title=A nice heading]
+%\end{tcolorbox}
+
+%\fbox{lol}
+
+%---------------------------
+
+\section{Problema 1}
+
+Calcule $3^{32} \ (\bmod\ 7)$
+\begin{solution}
+	Convertimos el dígito a binario: 
+	$$(32)_2=100000$$
+	\begin{align*}
+		\begin{array}{c|l}
+			(32)_{2} & c_{0}=1 \\
+			\hline 1 & c_{1} \equiv 1^{2} \cdot 3^{1}=1 \cdot 3=3 \bmod 7 \\
+			\hline 0 & c_{2} \equiv 3^{2} \cdot 3^{0}=9 \cdot 1=9 \equiv 2 \bmod 7 \\
+			\hline 0 & c_{3} \equiv 2^{2} \cdot 3^{0}=4 \cdot 1=4 \bmod 7 \\
+			\hline 0 & c_{4} \equiv 4^{2} \cdot 3^{0}=16 \cdot 1=16 \equiv 2 \bmod 7 \\
+			\hline 0 & c_{5} \equiv 2^{2} \cdot 3^{0}=4 \cdot 1=4 \bmod 7 \\
+			\hline 0 & c_{6} \equiv 4^{2} \cdot 3^{0}=16 \cdot 1=16 \equiv 2 \bmod 7
+		\end{array}
+	\end{align*}
+$$\therefore \ 3^{32}\equiv 2 \ (\bmod\ 7).$$
+\end{solution}
+\section{Problema 2}
+Calcule $2^{35}\ (\bmod\ 9)$
+\begin{solution}
+	Convertimos el dígito a binario: 
+	$$(35)_2=100011.$$
+
+	\begin{align*}
+		\begin{array}{l|l}
+			(35)_{2} & c_{0}=1 \\
+			\hline 1 & c_{1} \equiv 1^{2} \cdot 2^{1}=1 \cdot 2=2 \bmod 9 \\
+			\hline 0 & c_{2} \equiv 2^{2} \cdot 2^{0}=4 \cdot 1=4 \bmod 9 \\
+			\hline 0 & c_{3} \equiv 4^{2} \cdot 2^{0}=16 \cdot 1=16 \equiv 7 \bmod 9 \\
+			\hline 0 & c_{4} \equiv 7^{2} \cdot 2^{0}=49 \cdot 1=49 \equiv 4 \bmod 9 \\
+			\hline 1 & c_{5} \equiv 4^{2} \cdot 2^{1}=16 \cdot 2=32 \equiv 5 \bmod 9 \\
+			\hline 1 & c_{6} \equiv 5^{2} \cdot 2^{1}=25 \cdot 2=50 \equiv 5 \bmod 9
+		\end{array}
+	\end{align*}
+	$$\therefore \ 2^{35}\equiv 5 \ (\bmod\ 9).$$
+\end{solution}
+\section{Problema 3}
+Calcule $128^{129} \ (\bmod 17)$
+\begin{solution}
+	Convertimos el dígito a binario: 
+	$$(129)_2=10000001$$
+	\begin{align*}
+			\begin{array}{l|l}
+				(129)_{2} & c_{0}=1 \\
+				\hline 1 & c_{1} \equiv 1^{2} \cdot 128^{1}=1 \cdot 128=128 \equiv 9 \bmod 17 \\
+				\hline 0 & c_{2} \equiv 9^{2} \cdot 128^{0}=81 \cdot 1=81 \equiv 13 \bmod 17 \\
+				\hline 0 & c_{3} \equiv 13^{2} \cdot 128^{0}=169 \cdot 1=169 \equiv 16 \bmod 17 \\
+				\hline 0 & c_{4} \equiv 16^{2} \cdot 128^{0}=256 \cdot 1=256 \equiv 1 \bmod 17 \\
+				\hline 0 & c_{5} \equiv 1^{2} \cdot 128^{0}=1 \cdot 1=1 \bmod 17 \\
+				\hline 0 & c_{6} \equiv 1^{2} \cdot 128^{0}=1 \cdot 1=1 \bmod 17 \\
+				\hline 0 & c_{7} \equiv 1^{2} \cdot 128^{0}=1 \cdot 1=1 \bmod 17 \\
+				\hline 1 & c_{8} \equiv 1^{2} \cdot 128^{1}=1 \cdot 128=128 \equiv 9 \bmod 17
+			\end{array}
+	\end{align*}
+	$$\therefore \ 128^{129} \equiv 9 \ (\bmod \ 17).$$
+\end{solution}
+%---------------------------
+%\bibliographystyle{apalike}
+%\bibliography{sample.bib}
+
+\end{document}
