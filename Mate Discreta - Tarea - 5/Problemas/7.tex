@@ -1,0 +1,29 @@
+\section{Problema 7}
+\begin{enumerate}
+    \item ¿Cuántas cadenas de 12 bits tienen por lo menos cuatro 1’s?
+    \begin{solution}
+    \begin{align*}
+        C(12,4) &= 495\\
+        C(12,5) &= 792\\
+        C(12,6) &= 924\\
+        C(12,7) &= 792\\
+        C(12,8) &= 495\\
+        C(12,9) &= 220\\
+        C(12,10) &=66 \\
+        C(12,11) &=12 \\
+        C(12,12) &= 1\\
+                 &\quad \_\_\_+\\
+                 & \quad 3797 \text{ cadenas.}
+    \end{align*}
+    \end{solution}
+    \item ¿Cuántas cadenas binarias de longitud 10 comienzan con 111 o terminan con 101 o ambos?
+    \begin{enumerate}
+        \item Por el principio de la multiplicación:
+        $$2^7=128 \text{ cadenas.}$$ comienzan en 111.
+        \item Por el principio de la multiplicación:
+        $$2^7=128\text{ cadenas.}$$ terminan en 101.
+        \item Con «ambos» vamos a referirnos a que inician en 111 y terminan en 101; es decir, 
+        $$2^4=16\text{ cadenas.}$$
+    \end{enumerate}
+\end{enumerate}
+

@@ -1,0 +1,17 @@
+\section{Problema 1}
+
+Supongamos que no se permiten repeticiones.
+\begin{enumerate}
+    \item ¿Cuántos números de 3 dígitos se pueden formar con los siete dígitos 1, 2, 5, 6, 8, 9 y 0?
+    \begin{solution} Tenemos el conjunto de datos: $S_0= \{0,1,2,5,6,8,9\}$ con cardinalidad 7. Notamos que es un problema de $r$-permutación. La forma esperada es la siguiente: 
+    $$\underbrace{X}_{D_1}\underbrace{X}_{D_2} \underbrace{X}_{D_3}=P(n,r)=\square$$
+     Sin embargo, notamos que el dígito 0 podría generar problemas, ya que podrían generarse números de 3 cifras como 017, 007, etcétera; los cuales no serían números válidos. Por lo cual, excluimos el 0 y el conjunto sería $S_1= \{1,2,5,6,8,9\}$ con cardinalidad 6 para $D_1$; por su parte $D_2$ (ya que el 0 fue eliminado en $D_1$, entonces en $D_2$ sí es posible que haya un cero) y $D_3$ pertenecen a $S$. Ahora, por el principio del producto (y como no se pueden repetir):  
+    $$\underbrace{6}_{D_1}\cdot \underbrace{6}_{D_2}\cdot \underbrace{5}_{D_3}=P(6,1)\cdot P(6,2)=180 \text{ dígitos.}$$
+    \end{solution}
+    \item ¿Cuántos de estos son menores que 400?
+    \begin{solution}
+    Analizamos la situación, es decir que en la posición $D_1$ no pueden estar los números: $\{0,5,6,8,9\}$ ya que en el caso de $0$ no sería un número de 3 dígitos y en el caso de los demás números, sería un número mayor a 400. Entonces (ya que no se pueden repetir), 
+    
+    $$\underbrace{2}_{D_1}\cdot \underbrace{6}_{D_2}\cdot \underbrace{5}_{D_3}=P(2,1)\cdot P(6,2)=60 \text{ dígitos.}$$
+    \end{solution} 
+\end{enumerate}

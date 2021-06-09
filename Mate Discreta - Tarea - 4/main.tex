@@ -1,0 +1,90 @@
+\input{Configuraciones/paquetes}
+\begin{document}
+\input{Configuraciones/nombres}
+%--------------------------
+\section{Demostrar por inducción.}
+
+$$\sum_{i=0}^n C(n,i)=2^n$$
+
+\begin{proof}
+Para la demostración de esta prueba, el único teorema que vamos a asumir verdadero es el siguiente: 
+
+\begin{tcolorbox}[colback=gray!15,colframe=gray!1!gray,title=Teorema 2 de la Sección 6.3 de \cite{rosen2012discrete}]
+El número de $r$-combinaciones de un conjunto con $n$ elementos, donde $n$ es un entero no negativo y $r$ es un entero con $0\leq r\leq n$, es igual a: 
+$$C(n,r)=\frac{n!}{r!(n-r)!} = \binom{n}{r}$$
+\end{tcolorbox}
+
+\linita 
+
+Antes de comenzar el problema, usaremos una notación más cómoda: 
+$$\sum_{i=0}^n \binom{n}{i}=2^n$$
+Ahora bien, comenzamos la prueba por inducción. 
+
+\linita 
+
+\fbox{\textbf{Paso base:}}\newline 
+
+Se propone $n=1$, entonces: 
+\begin{align*}
+    \sum_{i=0}^1 \binom{1}{i}= \sum_{i=0}^1 \frac{1!}{i!(1-i)!} = \frac{1!}{0!(1-0)!} +\frac{1!}{1!(1-1)!}=1+1=2.
+\end{align*}
+Por lo tanto, el caso base se cumple. 
+
+\linita 
+
+\fbox{\textbf{Paso inductivo:}}\newline 
+
+Asumimos que $S(k)$ es verdadera para un $k\geq 1$.
+$$\sum_{i=0}^k \binom{k}{i}=2^k$$
+
+demostramos que $S(k)\implies S(k+1)$. Es decir que es necesario probar que: 
+$$\sum_{i=0}^{k+1} \binom{k+1}{i}=2^{k+1}.$$
+
+Para la argumentación, será necesario probar la identidad de Pascal, que se define: 
+
+\begin{tcolorbox}[colback=gray!15,colframe=gray!1!gray,title=Teorema 2 de la sección 6.4 de \cite{rosen2012discrete}.]
+$$\binom{n+1}{k}=\binom{n}{k-1}+\binom{n}{k}$$
+\begin{proof}
+\begin{align*}
+    \binom{n}{k-1}+\binom{n}{k} &= \frac{n!}{(k-1)!(n-(k-1))!} + \frac{n!}{k!(n-k)!}\\
+    &= \frac{n!k+n!(n-k+1)}{k!(n-k+1)!}\\
+    &= \frac{(n+1)n!}{k!((n+1)-k)!}\\
+    &= \frac{(n+1)!}{k!((n+1)-k)!}\\
+    &= \binom{n+1}{k}.
+\end{align*}
+\end{proof}
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!15,colframe=red!1!red,title=Casos importantes]
+\begin{enumerate}
+    \item \begin{align*}\binom{k+1}{0} = \binom{k}{0-1}+\binom{k}{0}= 0+\binom{k}{0} = \binom{k}{0} 
+    \end{align*}
+    \item Equivalencia \begin{align*}\binom{k+1}{k+1} = 1 = \binom{k}{k}
+    \end{align*}
+\end{enumerate}
+\end{tcolorbox}
+Ahora bien, 
+\begin{align*}
+    \sum_{i=0}^{k+1} \binom{k+1}{i} &= \binom{k+1}{0}+\binom{k+1}{1}+\binom{k+1}{2}+\cdots+ \binom{k+1}{k}+\binom{k+1}{k+1}
+    \intertext{Aplicando la identidad de Pascal:}
+    &= 
+        \binom{k+1}{0}+ \left[\binom{k}{1-1}+\binom{k}{1}\right]+\left[\binom{k}{2-1}+\binom{k}{2}\right]+\cdots+\\
+        &+ \left[\binom{k}{k-1}+\binom{k}{k}\right]+\binom{k+1}{k+1}\\
+    &= \binom{k+1}{0}+ \left[\binom{k}{0}+\binom{k}{1}\right]+\left[\binom{k}{1}+\binom{k}{2}\right]+\cdots+\\
+        &+ \left[\binom{k}{k-1}+\binom{k}{k}\right]+\binom{k+1}{k+1}
+        \intertext{Usando los casos importantes, mencionado en el cuadro de arriba:}
+        &= \binom{k}{0}+ \left[\binom{k}{0}+\binom{k}{1}\right]+\left[\binom{k}{1}+\binom{k}{2}\right]+\cdots+\\
+        &+ \left[\binom{k}{k-1}+\binom{k}{k}\right]+\binom{k}{k}\\
+        &= \left[\binom{k}{0} + \binom{k}{0}\right] +\left[\binom{k}{1} + \binom{k}{1}\right]+\cdots + \left[\binom{k}{k} + \binom{k}{k}\right]\\
+        &= 2 \sum_{i=0}^{k}\binom{k}{i}\\
+        &= 2\cdot 2^n\\
+        &= 2^{n+1}
+\end{align*}
+$\therefore$ $S(n)$ es verdadera para todo número $n\in\mathbb{N}$.
+\end{proof}
+
+
+%---------------------------
+\bibliographystyle{apalike}
+\bibliography{sample.bib}
+
+\end{document}

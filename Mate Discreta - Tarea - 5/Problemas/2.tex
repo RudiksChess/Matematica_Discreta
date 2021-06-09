@@ -1,0 +1,25 @@
+\section{Problema 2}
+
+¿Cuántas palabras diferentes se pueden formar con las letras de la palabra MOROSO?
+\begin{solution} Tomamos como referencia el término \textbf{palabras} para referirse a un conjunto ordenado de letras. Notamos que tenemos 3 O's indistinguibles,
+\begin{center}
+    M\textcolor{green}{O}R\textcolor{red}{O}S\textcolor{orange}{O}\\
+    M\textcolor{red}{O}R\textcolor{green}{O}S\textcolor{orange}{O}\\
+    M\textcolor{red}{O}R\textcolor{orange}{O}S\textcolor{green}{O}\\
+    $\vdots$
+\end{center}
+Vamos a usar la fórmula para permutaciones de elementos indistinguibles, 
+$$P(n,\{n_1,n_2,\cdots, n_k\})=\frac{n!}{n_1!n_2!\cdots n_k!}$$
+Entonces, 
+$$P(6,3)=\frac{6!}{3!}=120 \text{ palabras que se pueden juntar con MOROSO.}$$
+\end{solution}
+¿Cuántas de estas tienen las tres O’s juntas?
+
+\begin{solution}
+La estrategia consiste en considerar OOO como una letra gigante, es decir que tenemos la cadena de elementos, 
+$$
+    \underbrace{M}_{L_1}\underbrace{R}_{L_2}\underbrace{S}_{L_3}\underbrace{\textbf{OOO}}_{L_4}
+$$
+Es decir, podemos hacer una permutación: 
+$$P(4,4)=4!=24 \text{ palabras tienen OOO juntas.}$$
+\end{solution}
